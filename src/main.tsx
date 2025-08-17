@@ -1,14 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { Amplify } from "aws-amplify";
-import outputs from "../amplify_outputs.json";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import { Amplify } from 'aws-amplify';
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 
-Amplify.configure(outputs);
+async function initializeAmplify() {
+  try {
+    // Use dynamic import with string concatenation to avoid Rollup static analysis
+    const amplifyPath = '../amplify_outputs' + '.json';
+    const { default: outputs } = await import(/* @vite-ignore */ amplifyPath);
+    Amplify.configure(outputs);
+    console.log('Amplify configured successfully');
+  } catch {
+    console.log('Running in static mode - Amplify configuration not available');
+  }
+}
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Initialize Amplify before rendering
+initializeAmplify().then(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <MantineProvider>
+        <App />
+      </MantineProvider>
+    </React.StrictMode>,
+  );
+});
