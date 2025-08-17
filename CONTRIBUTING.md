@@ -5,23 +5,27 @@ Thank you for your interest in contributing to School Planner! This document pro
 ## Development Setup
 
 1. **Fork and clone the repository**
+
    ```bash
    git clone https://github.com/your-username/school-planner.git
    cd school-planner
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    # Edit .env.local with your configuration
    ```
 
 4. **Start the development environment**
+
    ```bash
    # Start Amplify sandbox
    npx ampx sandbox
@@ -33,22 +37,26 @@ Thank you for your interest in contributing to School Planner! This document pro
 ## Development Workflow
 
 1. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. **Make your changes**
+
    - Write clean, readable code
    - Follow the existing code style
    - Add comments for complex logic
 
 3. **Test your changes**
+
    ```bash
    npm run lint
    npm run build
    ```
 
 4. **Commit your changes**
+
    ```bash
    git add .
    git commit -m "feat: add your feature description"
@@ -70,6 +78,7 @@ Thank you for your interest in contributing to School Planner! This document pro
 ## Commit Messages
 
 Follow conventional commit format:
+
 - `feat:` for new features
 - `fix:` for bug fixes
 - `docs:` for documentation changes

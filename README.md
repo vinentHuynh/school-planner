@@ -28,22 +28,26 @@ A modern school planning application built with React, Vite, and AWS Amplify.
 ### Local Development
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd school-planner
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the Amplify sandbox**
+
    ```bash
    npx ampx sandbox
    ```
 
 4. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -61,13 +65,17 @@ A modern school planning application built with React, Vite, and AWS Amplify.
 ## Deployment
 
 ### Development/Testing
+
 The project uses Amplify Sandbox for development:
+
 ```bash
 npx ampx sandbox
 ```
 
 ### Production
+
 To deploy to production:
+
 ```bash
 npx ampx pipeline-deploy --branch main
 ```
@@ -94,6 +102,7 @@ school-planner/
 ## Authentication
 
 The app includes built-in authentication using AWS Amplify UI components:
+
 - Email-based sign up and sign in
 - Password reset functionality
 - Secure session management
