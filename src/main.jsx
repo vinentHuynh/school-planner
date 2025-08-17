@@ -4,23 +4,23 @@ import './index.css'
 import App from './App.jsx'
 import { Amplify } from 'aws-amplify'
 
-// Initialize Amplify configuration
 async function initializeAmplify() {
   try {
-    const { default: outputs } = await import('../amplify_outputs.json')
+    // Use dynamic import with string concatenation to avoid Rollup static analysis
+    const amplifyPath = '../amplify_outputs' + '.json'
+    const { default: outputs } = await import(/* @vite-ignore */ amplifyPath)
     Amplify.configure(outputs)
-    console.log('Amplify configured with backend')
+    console.log('Amplify configured successfully')
   } catch {
-    console.log('Amplify outputs not found - running in static mode')
-    // App will run without Amplify backend features
+    console.log('Running in static mode - Amplify configuration not available')
   }
 }
 
-// Initialize Amplify
-initializeAmplify()
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// Initialize Amplify before rendering
+initializeAmplify().then(() => {
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+})
