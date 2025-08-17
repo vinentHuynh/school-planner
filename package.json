@@ -1,8 +1,20 @@
 {
   "name": "school-planner",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern school planning application built with React, Vite, and AWS Amplify",
+  "keywords": ["school", "planner", "education", "react", "amplify", "aws"],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/school-planner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/school-planner/issues"
+  },
+  "homepage": "https://github.com/your-username/school-planner#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
