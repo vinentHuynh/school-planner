@@ -1,6 +1,7 @@
+import React from 'react';
 import { Container, Title, Button, Text } from '@mantine/core';
 
-function TestApp() {
+function TestApp(): React.JSX.Element {
   return (
     <Container size='md' py='xl'>
       <Title order={1} c='blue'>

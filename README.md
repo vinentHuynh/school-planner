@@ -90,10 +90,10 @@ school-planner/
 │   └── backend.ts          # Main backend definition
 ├── src/
 │   ├── assets/             # Static assets
-│   ├── App.jsx            # Main app component
+│   ├── App.tsx            # Main app component
 │   ├── App.css            # App styles
 │   ├── index.css          # Global styles
-│   └── main.jsx           # App entry point
+│   └── main.tsx           # App entry point
 ├── public/                 # Public assets
 ├── package.json
 └── README.md
