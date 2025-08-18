@@ -542,32 +542,51 @@ function App() {
     const dayLessonPlans = getLessonPlansForDay(selectedDay);
     
     return (
-      <Container size="md" py="md">
-        <Stack gap="lg">
-          <Group justify="space-between" align="center">
+      <Box 
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'white',
+          zIndex: 1000,
+          overflow: 'auto',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          paddingTop: '2rem',
+          paddingBottom: '2rem'
+        }}
+      >
+        <Container size="xl" style={{ maxWidth: '90vw', width: '100%' }}>
+          <Stack gap="lg">
+            <Group justify="space-between" align="center" mb="lg">
             <Group>
               <ActionIcon
                 variant="subtle"
-                size="lg"
+                size="xl"
                 onClick={closeDayView}
+                style={{ 
+                  borderRadius: '50%',
+                  '&:hover': { backgroundColor: '#f8f9fa' }
+                }}
               >
-                <IconArrowLeft size={20} />
+                <IconArrowLeft size={24} />
               </ActionIcon>
-              <Stack gap={4}>
-                <Title order={1} c={selectedDayInfo?.color}>
+              <Stack gap={6}>
+                <Title order={1} c={selectedDayInfo?.color} size="2.5rem">
                   {selectedDayInfo?.name}
                 </Title>
-                <Text size="sm" c="dimmed">
+                <Text size="md" c="dimmed">
                   {selectedDayInfo?.name !== 'Inbox' ? getCurrentDate(selectedDayInfo?.name || '') : 'Unscheduled Tasks'}
                 </Text>
               </Stack>
             </Group>
-            <Badge color={selectedDayInfo?.color.replace('#', '')} size="lg">
+            <Badge color={selectedDayInfo?.color.replace('#', '')} size="xl" style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}>
               {dayLessonPlans.length} {dayLessonPlans.length === 1 ? 'lesson plan' : 'lesson plans'}
             </Badge>
-          </Group>
-
-          <DndContext
+          </Group>          <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
             onDragStart={handleDragStart}
@@ -578,31 +597,33 @@ function App() {
               items={dayLessonPlans.map(lessonPlan => lessonPlan.id)}
               strategy={verticalListSortingStrategy}
             >
-              <Stack gap="md">
+              <Stack gap="xl">
                 {dayLessonPlans.map((lessonPlan) => (
                   <Paper
                     key={lessonPlan.id}
-                    shadow="sm"
-                    p="lg"
+                    shadow="md"
+                    p="xl"
                     withBorder
                     style={{
-                      borderLeft: `6px solid ${selectedDayInfo?.color}`,
+                      borderLeft: `8px solid ${selectedDayInfo?.color}`,
+                      borderRadius: '12px',
+                      transition: 'all 0.2s ease',
                     }}
                   >
                     <Group justify="space-between" wrap="nowrap">
                       <Box style={{ flex: 1 }}>
-                        <Group justify="space-between" align="flex-start" mb="xs">
+                        <Group justify="space-between" align="flex-start" mb="md">
                           <Box>
-                            <Text size="md" fw={500}>{lessonPlan.title}</Text>
-                            <Group gap="xs" mt={2}>
-                              <Badge variant="light" leftSection={<IconBook size={12} />}>
+                            <Text size="lg" fw={600} mb="xs">{lessonPlan.title}</Text>
+                            <Group gap="sm" mt={4}>
+                              <Badge variant="light" leftSection={<IconBook size={14} />} size="md">
                                 {lessonPlan.subject}
                               </Badge>
-                              <Badge variant="outline" leftSection={<IconClock size={12} />}>
+                              <Badge variant="outline" leftSection={<IconClock size={14} />} size="md">
                                 {lessonPlan.duration} min
                               </Badge>
                               {lessonPlan.timeSlot && (
-                                <Badge variant="outline" color="gray">
+                                <Badge variant="outline" color="gray" size="md">
                                   {lessonPlan.timeSlot}
                                 </Badge>
                               )}
@@ -611,36 +632,38 @@ function App() {
                         </Group>
                         
                         {lessonPlan.description && (
-                          <Text size="sm" c="dimmed" mb="xs">{lessonPlan.description}</Text>
+                          <Text size="sm" c="dimmed" mb="sm" style={{ lineHeight: 1.6 }}>{lessonPlan.description}</Text>
                         )}
                         
                         {lessonPlan.objectives && (
-                          <Text size="xs" c="dimmed" mb="xs">
+                          <Text size="sm" c="dimmed" mb="sm" style={{ lineHeight: 1.6 }}>
                             <strong>Objectives:</strong> {lessonPlan.objectives}
                           </Text>
                         )}
                         
                         {lessonPlan.materials && (
-                          <Text size="xs" c="dimmed">
+                          <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>
                             <strong>Materials:</strong> {lessonPlan.materials}
                           </Text>
                         )}
                       </Box>
                       
-                      <Group gap="xs">
+                      <Group gap="sm">
                         <ActionIcon
                           color="blue"
                           variant="subtle"
+                          size="lg"
                           onClick={() => editLessonPlan(lessonPlan.id)}
                         >
-                          <IconEdit size={18} />
+                          <IconEdit size={20} />
                         </ActionIcon>
                         <ActionIcon
                           color="red"
                           variant="subtle"
+                          size="lg"
                           onClick={() => deleteLessonPlan(lessonPlan.id)}
                         >
-                          <IconTrash size={18} />
+                          <IconTrash size={20} />
                         </ActionIcon>
                       </Group>
                     </Group>
@@ -679,26 +702,32 @@ function App() {
           </DndContext>
 
           {dayLessonPlans.length === 0 && (
-            <Paper p="xl" ta="center" c="dimmed" style={{ backgroundColor: '#f8f9fa' }}>
-              <IconCalendar size={48} style={{ opacity: 0.3, marginBottom: '16px' }} />
-              <Title order={3} c="dimmed" mb="sm">No lesson plans scheduled</Title>
-              <Text size="sm" c="dimmed">
+            <Paper p="3xl" ta="center" c="dimmed" style={{ backgroundColor: '#f8f9fa', borderRadius: '16px' }}>
+              <IconCalendar size={64} style={{ opacity: 0.3, marginBottom: '24px' }} />
+              <Title order={2} c="dimmed" mb="lg">No lesson plans scheduled</Title>
+              <Text size="md" c="dimmed" style={{ lineHeight: 1.6, maxWidth: '400px', margin: '0 auto' }}>
                 No lesson plans scheduled for {selectedDayInfo?.name}. Create new lesson plans to get started.
               </Text>
             </Paper>
           )}
 
           <Button
-            leftSection={<IconPlus size={16} />}
+            leftSection={<IconPlus size={18} />}
             onClick={createLessonPlan}
             variant="filled"
-            size="lg"
+            size="xl"
             fullWidth
+            style={{ 
+              height: '60px',
+              fontSize: '1.1rem',
+              borderRadius: '12px'
+            }}
           >
             Add Lesson Plan for {selectedDayInfo?.name}
           </Button>
         </Stack>
-      </Container>
+        </Container>
+      </Box>
     );
   }
 
@@ -734,7 +763,7 @@ function App() {
           )}
         </Container>
 
-        <Box px="md">
+        <Container size="xl">
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
@@ -742,7 +771,14 @@ function App() {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
           >
-            <SimpleGrid cols={{ base: 2, sm: 3, md: 4, lg: 8 }} spacing="md">
+            <Box style={{ display: 'flex', justifyContent: 'center' }}>
+              <SimpleGrid 
+                cols={{ base: 1, xs: 2, sm: 3, md: 4, lg: 7, xl: 7 }} 
+                spacing="md"
+                style={{ 
+                  maxWidth: 'fit-content'
+                }}
+              >
               {daysOfWeek.map((day) => {
                 const dayLessonPlans = getLessonPlansForDay(day.id);
                 return (
@@ -772,6 +808,7 @@ function App() {
                 );
               })}
             </SimpleGrid>
+            </Box>
 
             <DragOverlay>
               {activeId && activeLessonPlan ? (
@@ -802,7 +839,7 @@ function App() {
               ) : null}
             </DragOverlay>
           </DndContext>
-        </Box>
+        </Container>
 
         <Container size="xl">
           <Box mt="lg" p="md" style={{ backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
