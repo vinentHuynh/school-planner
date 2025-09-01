@@ -15,14 +15,12 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
   });
 
   return (
-    <MantineProvider 
-      theme={theme} 
-      defaultColorScheme="light"
+    <MantineProvider
+      theme={theme}
+      defaultColorScheme='light'
       forceColorScheme={colorScheme === 'auto' ? undefined : colorScheme}
     >
-      <ModalsProvider>
-        {children}
-      </ModalsProvider>
+      <ModalsProvider>{children}</ModalsProvider>
     </MantineProvider>
   );
 }

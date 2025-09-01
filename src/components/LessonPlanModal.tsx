@@ -38,12 +38,17 @@ export function LessonPlanModal({
   // Get theme-aware input styles
   const getInputStyles = () => ({
     input: {
-      backgroundColor: colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
-      color: colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[9],
-      border: `1px solid ${colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[4]}`,
+      backgroundColor:
+        colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
+      color:
+        colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[9],
+      border: `1px solid ${
+        colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[4]
+      }`,
     },
     label: {
-      color: colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[9],
+      color:
+        colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.dark[9],
       fontWeight: 500,
     },
   });

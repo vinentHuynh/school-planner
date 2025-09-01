@@ -56,12 +56,12 @@ function App() {
     // Clear any stored data
     localStorage.clear();
     sessionStorage.clear();
-    
+
     // You can add additional logout logic here, such as:
     // - Calling Amplify Auth.signOut()
     // - Redirecting to login page
     // - Clearing application state
-    
+
     console.log('User logged out');
     alert('You have been signed out successfully');
   };
@@ -71,8 +71,8 @@ function App() {
       <Box>
         <Header isAmplifyReady={isAmplifyReady} />
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path='/'
             element={
               <HomePage
                 lessonPlans={lessonPlans}
@@ -94,18 +94,14 @@ function App() {
                 handleDragEnd={handleDragEnd}
                 collisionDetection={collisionDetection}
               />
-            } 
+            }
           />
-          <Route 
-            path="/create-lesson" 
-            element={
-              <CreateLessonPage
-                onSave={handleSaveFromCreatePage}
-              />
-            } 
+          <Route
+            path='/create-lesson'
+            element={<CreateLessonPage onSave={handleSaveFromCreatePage} />}
           />
-          <Route 
-            path="/settings" 
+          <Route
+            path='/settings'
             element={
               <SettingsPage
                 darkMode={colorScheme === 'dark'}
@@ -113,7 +109,7 @@ function App() {
                 onLogout={handleLogout}
                 isAmplifyReady={isAmplifyReady}
               />
-            } 
+            }
           />
         </Routes>
       </Box>

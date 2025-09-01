@@ -141,18 +141,20 @@ export function HomePage({
           <Box
             mt='lg'
             p='md'
-            style={{ 
-              backgroundColor: colorScheme === 'dark' 
-                ? theme.colors.dark[6] 
-                : theme.colors.gray[0], 
-              borderRadius: '8px' 
+            style={{
+              backgroundColor:
+                colorScheme === 'dark'
+                  ? theme.colors.dark[6]
+                  : theme.colors.gray[0],
+              borderRadius: '8px',
             }}
           >
             <Text size='sm' c='dimmed' ta='center'>
               📚 Weekly lesson planner for educators! Organize your teaching
               schedule by dragging lesson plans between days.
               <br />
-              Click a day to view details or use the "Create Lesson" tab to add new lesson plans.
+              Click a day to view details or use the "Create Lesson" tab to add
+              new lesson plans.
             </Text>
           </Box>
         </Container>

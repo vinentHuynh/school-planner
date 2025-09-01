@@ -1,6 +1,14 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Paper, Group, Stack, Text, ActionIcon, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import {
+  Paper,
+  Group,
+  Stack,
+  Text,
+  ActionIcon,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 import { SortableItemProps } from '../types';
 
@@ -27,8 +35,10 @@ export function SortableItem({
     transition,
     opacity: isDragging ? 0.5 : 1,
     cursor: isDragging ? 'grabbing' : 'grab',
-    backgroundColor: isDragging 
-      ? (colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0])
+    backgroundColor: isDragging
+      ? colorScheme === 'dark'
+        ? theme.colors.dark[7]
+        : theme.colors.gray[0]
       : undefined,
   };
 
@@ -37,7 +47,9 @@ export function SortableItem({
       ref={setNodeRef}
       style={{
         ...style,
-        borderLeft: `4px solid ${colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
+        borderLeft: `4px solid ${
+          colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+        }`,
       }}
       shadow='xs'
       p='sm'

@@ -12,7 +12,12 @@ import {
   Box,
   useMantineTheme,
 } from '@mantine/core';
-import { IconMoon, IconSun, IconLogout, IconSettings } from '@tabler/icons-react';
+import {
+  IconMoon,
+  IconSun,
+  IconLogout,
+  IconSettings,
+} from '@tabler/icons-react';
 
 interface SettingsPageProps {
   darkMode: boolean;
@@ -21,11 +26,11 @@ interface SettingsPageProps {
   isAmplifyReady: boolean;
 }
 
-export function SettingsPage({ 
-  darkMode, 
-  onToggleDarkMode, 
+export function SettingsPage({
+  darkMode,
+  onToggleDarkMode,
   onLogout,
-  isAmplifyReady 
+  isAmplifyReady,
 }: SettingsPageProps) {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const theme = useMantineTheme();
@@ -44,18 +49,13 @@ export function SettingsPage({
   };
 
   return (
-    <Box p="md" style={{ minHeight: '100vh', width: '100vw' }}>
-      <Container size="md">
-        <Paper 
-          p="xl" 
-          withBorder 
-          radius="md" 
-          shadow="sm"
-        >
-          <Stack gap="lg">
+    <Box p='md' style={{ minHeight: '100vh', width: '100vw' }}>
+      <Container size='md'>
+        <Paper p='xl' withBorder radius='md' shadow='sm'>
+          <Stack gap='lg'>
             <Group>
               <IconSettings size={24} color={theme.colors.blue[6]} />
-              <Title order={2} c="blue">
+              <Title order={2} c='blue'>
                 Settings
               </Title>
             </Group>
@@ -63,17 +63,17 @@ export function SettingsPage({
             <Divider />
 
             {/* Appearance Settings */}
-            <Stack gap="md">
-              <Title order={3} size="h4">
+            <Stack gap='md'>
+              <Title order={3} size='h4'>
                 Appearance
               </Title>
-              
-              <Group justify="space-between">
+
+              <Group justify='space-between'>
                 <Group>
                   {darkMode ? <IconMoon size={20} /> : <IconSun size={20} />}
                   <Stack gap={0}>
                     <Text fw={500}>Dark Mode</Text>
-                    <Text size="sm" c="dimmed">
+                    <Text size='sm' c='dimmed'>
                       Toggle between light and dark theme
                     </Text>
                   </Stack>
@@ -81,8 +81,8 @@ export function SettingsPage({
                 <Switch
                   checked={darkMode}
                   onChange={onToggleDarkMode}
-                  size="lg"
-                  color="blue"
+                  size='lg'
+                  color='blue'
                 />
               </Group>
             </Stack>
@@ -90,46 +90,47 @@ export function SettingsPage({
             <Divider />
 
             {/* Account Settings */}
-            <Stack gap="md">
-              <Title order={3} size="h4">
+            <Stack gap='md'>
+              <Title order={3} size='h4'>
                 Account
               </Title>
-              
-              <Stack gap="sm">
-                <Text size="sm" c="dimmed">
-                  Connection Status: {isAmplifyReady ? 'Connected to AWS Amplify' : 'Demo Mode'}
+
+              <Stack gap='sm'>
+                <Text size='sm' c='dimmed'>
+                  Connection Status:{' '}
+                  {isAmplifyReady ? 'Connected to AWS Amplify' : 'Demo Mode'}
                 </Text>
-                
+
                 {!showLogoutConfirm ? (
                   <Group>
                     <Button
                       leftSection={<IconLogout size={16} />}
-                      variant="outline"
-                      color="red"
+                      variant='outline'
+                      color='red'
                       onClick={handleLogoutClick}
                     >
                       Sign Out
                     </Button>
                   </Group>
                 ) : (
-                  <Paper p="md" withBorder bg="red.0">
-                    <Stack gap="md">
-                      <Text fw={500} c="red">
+                  <Paper p='md' withBorder bg='red.0'>
+                    <Stack gap='md'>
+                      <Text fw={500} c='red'>
                         Are you sure you want to sign out?
                       </Text>
                       <Group>
                         <Button
-                          variant="filled"
-                          color="red"
+                          variant='filled'
+                          color='red'
                           onClick={handleConfirmLogout}
-                          size="sm"
+                          size='sm'
                         >
                           Yes, Sign Out
                         </Button>
                         <Button
-                          variant="outline"
+                          variant='outline'
                           onClick={handleCancelLogout}
-                          size="sm"
+                          size='sm'
                         >
                           Cancel
                         </Button>
@@ -143,20 +144,27 @@ export function SettingsPage({
             <Divider />
 
             {/* App Information */}
-            <Stack gap="md">
-              <Title order={3} size="h4">
+            <Stack gap='md'>
+              <Title order={3} size='h4'>
                 About
               </Title>
-              
-              <Stack gap="xs">
-                <Text size="sm">
-                  <Text span fw={500}>Version:</Text> 1.0.0
+
+              <Stack gap='xs'>
+                <Text size='sm'>
+                  <Text span fw={500}>
+                    Version:
+                  </Text>{' '}
+                  1.0.0
                 </Text>
-                <Text size="sm">
-                  <Text span fw={500}>Last Updated:</Text> August 2025
+                <Text size='sm'>
+                  <Text span fw={500}>
+                    Last Updated:
+                  </Text>{' '}
+                  August 2025
                 </Text>
-                <Text size="sm" c="dimmed">
-                  School Planner - A modern lesson planning application built with React, Mantine, and AWS Amplify.
+                <Text size='sm' c='dimmed'>
+                  School Planner - A modern lesson planning application built
+                  with React, Mantine, and AWS Amplify.
                 </Text>
               </Stack>
             </Stack>

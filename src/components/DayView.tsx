@@ -72,7 +72,8 @@ export function DayView({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+        backgroundColor:
+          colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
         zIndex: 1000,
         overflow: 'auto',
         display: 'flex',
@@ -95,10 +96,11 @@ export function DayView({
                 }}
                 styles={{
                   root: {
-                    '&:hover': { 
-                      backgroundColor: colorScheme === 'dark' 
-                        ? theme.colors.dark[6] 
-                        : theme.colors.gray[1] 
+                    '&:hover': {
+                      backgroundColor:
+                        colorScheme === 'dark'
+                          ? theme.colors.dark[6]
+                          : theme.colors.gray[1],
                     },
                   },
                 }}
@@ -280,11 +282,12 @@ export function DayView({
               p='3xl'
               ta='center'
               c='dimmed'
-              style={{ 
-                backgroundColor: colorScheme === 'dark' 
-                  ? theme.colors.dark[6] 
-                  : theme.colors.gray[0], 
-                borderRadius: '16px' 
+              style={{
+                backgroundColor:
+                  colorScheme === 'dark'
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[0],
+                borderRadius: '16px',
               }}
             >
               <IconCalendar

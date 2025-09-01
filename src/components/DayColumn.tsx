@@ -1,5 +1,15 @@
 import { useDroppable } from '@dnd-kit/core';
-import { Box, Group, Stack, Text, Paper, useMantineColorScheme, useMantineTheme, ActionIcon, Tooltip } from '@mantine/core';
+import {
+  Box,
+  Group,
+  Stack,
+  Text,
+  Paper,
+  useMantineColorScheme,
+  useMantineTheme,
+  ActionIcon,
+  Tooltip,
+} from '@mantine/core';
 import { IconCalendar, IconChevronRight } from '@tabler/icons-react';
 import { DayColumnProps } from '../types';
 import { getCurrentDate } from '../utils/dateUtils';
@@ -20,16 +30,16 @@ export function DayColumn({
   const { colorScheme } = useMantineColorScheme();
 
   const style = {
-    backgroundColor: isOver 
-      ? `${color}15` 
-      : colorScheme === 'dark' 
-        ? theme.colors.dark[6] 
-        : theme.colors.gray[0],
-    borderColor: isOver 
-      ? color 
-      : colorScheme === 'dark' 
-        ? theme.colors.dark[3] 
-        : theme.colors.gray[3],
+    backgroundColor: isOver
+      ? `${color}15`
+      : colorScheme === 'dark'
+      ? theme.colors.dark[6]
+      : theme.colors.gray[0],
+    borderColor: isOver
+      ? color
+      : colorScheme === 'dark'
+      ? theme.colors.dark[3]
+      : theme.colors.gray[3],
     borderWidth: '2px',
     borderStyle: isOver ? 'solid' : 'dashed',
     borderRadius: '12px',
@@ -59,11 +69,14 @@ export function DayColumn({
             {dayName !== 'Inbox' ? getCurrentDate(dayName) : 'Unscheduled'}
           </Text>
         </Stack>
-        <Tooltip label={`View ${count} lesson${count !== 1 ? 's' : ''}`} position="top">
+        <Tooltip
+          label={`View ${count} lesson${count !== 1 ? 's' : ''}`}
+          position='top'
+        >
           <ActionIcon
-            variant="subtle"
+            variant='subtle'
             color={color.replace('#', '')}
-            size="sm"
+            size='sm'
             onClick={(e) => {
               e.stopPropagation();
               onClick();

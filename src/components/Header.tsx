@@ -20,9 +20,13 @@ export function Header({ isAmplifyReady }: HeaderProps) {
   const location = useLocation();
   const theme = useMantineTheme();
   const { colorScheme } = useMantineColorScheme();
-  
-  const activeTab = location.pathname === '/create-lesson' ? 'create' : 
-                   location.pathname === '/settings' ? 'settings' : 'home';
+
+  const activeTab =
+    location.pathname === '/create-lesson'
+      ? 'create'
+      : location.pathname === '/settings'
+      ? 'settings'
+      : 'home';
 
   const handleTabChange = (value: string | null) => {
     if (value === 'home') {
@@ -35,42 +39,34 @@ export function Header({ isAmplifyReady }: HeaderProps) {
   };
 
   return (
-    <Container size="xl" p="md">
-      <Stack gap="lg">
-        <Group justify="space-between" align="center">
+    <Container size='xl' p='md'>
+      <Stack gap='lg'>
+        <Group justify='space-between' align='center'>
           <Stack gap={4}>
-            <Title order={1} c="blue">
+            <Title order={1} c='blue'>
               📚 School Planner - Lesson Plan Manager
             </Title>
-            <Text size="sm" c="dimmed">
-              Drag and drop lesson plans to organize your weekly teaching schedule
+            <Text size='sm' c='dimmed'>
+              Drag and drop lesson plans to organize your weekly teaching
+              schedule
             </Text>
           </Stack>
         </Group>
 
-        <Tabs 
-          value={activeTab} 
+        <Tabs
+          value={activeTab}
           onChange={handleTabChange}
-          variant="outline"
-          radius="md"
+          variant='outline'
+          radius='md'
         >
           <Tabs.List>
-            <Tabs.Tab 
-              value="home" 
-              leftSection={<IconHome size={16} />}
-            >
+            <Tabs.Tab value='home' leftSection={<IconHome size={16} />}>
               Home
             </Tabs.Tab>
-            <Tabs.Tab 
-              value="create" 
-              leftSection={<IconPlus size={16} />}
-            >
+            <Tabs.Tab value='create' leftSection={<IconPlus size={16} />}>
               Create Lesson
             </Tabs.Tab>
-            <Tabs.Tab 
-              value="settings" 
-              leftSection={<IconSettings size={16} />}
-            >
+            <Tabs.Tab value='settings' leftSection={<IconSettings size={16} />}>
               Settings
             </Tabs.Tab>
           </Tabs.List>
@@ -78,15 +74,23 @@ export function Header({ isAmplifyReady }: HeaderProps) {
 
         {!isAmplifyReady && (
           <div>
-            <Text size="sm" c="orange" p="sm" style={{ 
-              backgroundColor: colorScheme === 'dark' 
-                ? theme.colors.yellow[9] 
-                : theme.colors.yellow[1], 
-              border: `1px solid ${colorScheme === 'dark' 
-                ? theme.colors.yellow[6] 
-                : theme.colors.yellow[4]}`,
-              borderRadius: '4px'
-            }}>
+            <Text
+              size='sm'
+              c='orange'
+              p='sm'
+              style={{
+                backgroundColor:
+                  colorScheme === 'dark'
+                    ? theme.colors.yellow[9]
+                    : theme.colors.yellow[1],
+                border: `1px solid ${
+                  colorScheme === 'dark'
+                    ? theme.colors.yellow[6]
+                    : theme.colors.yellow[4]
+                }`,
+                borderRadius: '4px',
+              }}
+            >
               Running in demo mode - Amplify backend not connected
             </Text>
           </div>

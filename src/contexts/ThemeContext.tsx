@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import { MantineColorScheme } from '@mantine/core';
 
 interface ThemeContextType {
@@ -28,7 +34,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   });
 
   const toggleColorScheme = () => {
-    setColorScheme(current => {
+    setColorScheme((current) => {
       const newScheme = current === 'dark' ? 'light' : 'dark';
       localStorage.setItem('mantine-color-scheme', newScheme);
       return newScheme;
