@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { Amplify } from 'aws-amplify';
-import { MantineProvider } from '@mantine/core';
+import { ThemeProvider } from './contexts';
+import { AppThemeProvider } from './components/AppThemeProvider.tsx';
 import '@mantine/core/styles.css';
 
 async function initializeAmplify() {
@@ -22,9 +23,11 @@ async function initializeAmplify() {
 initializeAmplify().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <MantineProvider>
-        <App />
-      </MantineProvider>
+      <ThemeProvider>
+        <AppThemeProvider>
+          <App />
+        </AppThemeProvider>
+      </ThemeProvider>
     </React.StrictMode>,
   );
 });
